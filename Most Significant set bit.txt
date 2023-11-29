@@ -1,0 +1,45 @@
+Given an Integer N find the most significant set bit or find the greater number which is smaller than N which power of 2
+Example: N = 10,binary represention 1010 most significant set bit is fist 1 which is represents 8 in decimal
+and 8 also power of 2 which is less than 10.
+
+C++ code:
+#include <bits/stdc++.h>
+using namespace std;
+
+int mostSignificantSetBit(int N){
+	if(N==0)
+	return 0;
+	
+	int msb = 0;
+	N = N/2;
+	//Divide N till it zero
+	while(N!= 0){
+		N/= 2;
+		msb++;
+	}
+	return (1<<msb);
+}
+//Time Complexit: O(log(N))
+//Space Complexity:O(1)
+/*
+we can also solve using built in function to count leading zero and left shift 31-count_of_leading_zeros
+
+int mSB(int N){
+
+	int count_leading_zeros = __builtin_clz(N);
+	
+	return 1<<(31-count_leading_zeros);
+	
+}
+Time Complexity:O(1)
+Space Complexity:O(1)
+*/
+
+int main() {
+	// your code goes here
+	int N = 10;
+	cin>>N;
+	cout<<mostSignificantSetBit(N)<<endl;
+	
+	return 0;
+}
